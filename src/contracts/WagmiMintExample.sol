@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.20;
+pragma solidity 0.8.18;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
@@ -33,15 +33,9 @@ contract WagmiMintExample is ERC721 {
         }
     }
 
-    function tokenURI(
-        uint256 tokenId
-    ) public pure override returns (string memory) {
-        uint256 foregroundHue = uint256(
-            keccak256(abi.encodePacked("foreground", tokenId))
-        ) % 360;
-        uint256 backgroundHue = uint256(
-            keccak256(abi.encodePacked("background", tokenId))
-        ) % 360;
+    function tokenURI(uint256 tokenId) public pure override returns (string memory) {
+        uint256 foregroundHue = uint256(keccak256(abi.encodePacked("foreground", tokenId))) % 360;
+        uint256 backgroundHue = uint256(keccak256(abi.encodePacked("background", tokenId))) % 360;
         string memory json = Base64.encode(
             bytes(
                 abi.encodePacked(
@@ -63,9 +57,7 @@ contract WagmiMintExample is ERC721 {
                 )
             )
         );
-        string memory output = string(
-            abi.encodePacked("data:application/json;base64,", json)
-        );
+        string memory output = string(abi.encodePacked("data:application/json;base64,", json));
         return output;
     }
 

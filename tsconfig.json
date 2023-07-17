@@ -4,7 +4,7 @@
       {
         "name": "@evmts/ts-plugin",
         "compiler": {
-          "solcVersion": "0.8.20"
+          "solcVersion": "0.8.18"
         },
         "internalContracts": {
           "deployments": [
